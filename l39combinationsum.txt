@@ -1,0 +1,30 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> comb=new ArrayList<>();
+        
+        generateCombination(0,new ArrayList(),comb,candidates,target);
+        return comb;
+        
+    }
+    
+    
+    void generateCombination(int index, List<Integer> curr,List<List<Integer>> comb,int []candidates,int target){
+        
+        if(target==0){
+            comb.add(new ArrayList(curr));
+            return;
+            
+        }
+        if(target<0)
+            return ;
+        
+        
+        for(int i=index;i<candidates.length;i++){
+            curr.add(candidates[i]);
+            generateCombination(i,curr,comb,candidates,target-candidates[i]);
+            curr.remove(curr.size()-1);
+        }
+        
+        
+    }
+}

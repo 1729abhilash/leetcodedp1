@@ -1,0 +1,31 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        int len=nums.length;
+        List<List<Integer>> permutations=new ArrayList<>();
+        generatePermutations(0,nums,new ArrayList(),permutations,len);
+        return permutations;
+        
+        }
+
+
+void generatePermutations(int start,int []nums,List<Integer> curr,List<List<Integer>> permutations,int length){
+    
+    if(curr.size()==length){
+        permutations.add(new ArrayList(curr));
+        return;
+        
+    }
+    
+    
+    for(int i=start;i<length;i++){
+        if(curr.contains(nums[i]))continue;
+        curr.add(nums[i]);
+        generatePermutations(0,nums,curr,permutations,length);
+        curr.remove(curr.size()-1);
+        
+        
+    }
+    
+}
+
+}

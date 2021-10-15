@@ -1,0 +1,32 @@
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        
+               Arrays.sort(nums);
+            List<List<Integer>> powerset=new ArrayList<>();
+     
+    generateSubsets(0,nums,new ArrayList(),powerset);
+        return powerset;
+    }
+    
+    void generateSubsets(int start,int nums[],List<Integer>curr, List<List<Integer>> powerset){
+        
+       
+           powerset.add(new ArrayList(curr));
+          
+           
+       
+        
+        for(int i=start;i<nums.length;i++){
+            if(i>start&&nums[i-1]==nums[i])continue;
+            curr.add(nums[i]);
+            generateSubsets(i+1,nums,curr,powerset);
+            curr.remove(curr.size()-1);
+            
+            
+        }
+        
+    }
+        
+        
+    
+}

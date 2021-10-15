@@ -1,0 +1,29 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> total=new ArrayList<>();
+        
+        generateParantheses("(",1,0,total,n);
+        return total;
+        }
+    
+    void generateParantheses(String s,int o,int c,List<String> total,int n){
+        
+        if(s.length()==2*n)
+        {
+            total.add(s);
+            return;
+            }
+        
+        
+        if(o<n)
+            generateParantheses( s+"(",o+1,c,total,n);
+            if(c<o)
+                 generateParantheses( s+")",o,c+1,total,n);
+            
+        
+        
+        
+    }
+    
+    
+}

@@ -1,0 +1,30 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        
+        
+            List<List<Integer>> powerset=new ArrayList<>();
+     
+    generateSubsets(1,n,new ArrayList(),powerset,k);
+        return powerset;
+    }
+    
+    void generateSubsets(int start,int end,List<Integer>curr, List<List<Integer>> powerset,int k){
+        
+       if(curr.size()==k){
+           powerset.add(new ArrayList(curr));
+           return;
+           
+       }
+        
+        for(int i=start;i<=end;i++){
+            curr.add(i);
+            generateSubsets(i+1,end,curr,powerset,k);
+            curr.remove(curr.size()-1);
+            
+            
+        }
+        
+    }
+        
+    
+}
